@@ -48,19 +48,19 @@ public class D17 {
  * ÖĞÎ»Êı	
  */
 	
-	public MedianFinder() {
-		
-	}
-
-	public void addNum(int num) {
-		
-	}
-
-	public double findMedian() {
-		if() {
-			
-		}
-	}
+//	public MedianFinder() {
+//		
+//	}
+//
+//	public void addNum(int num) {
+//		
+//	}
+//
+//	public double findMedian() {
+//		if() {
+//			
+//		}
+//	}
 	
 	
 	
