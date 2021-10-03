@@ -343,9 +343,67 @@ public class Solution {
 //		}
 //	}
 	
+/**
+ * 求一个字符串中最长无重复的字串
+ * @param s
+ * @return
+ */
+//方法一：myself暴力循环 复杂度不太好
+//	public int lengthOfLongestSubstring(String s) {
+//		Map<Character,Integer> map = new HashMap<>();
+//		char[] tmp = s.toCharArray();
+//		if(tmp.length==0) {
+//			return 0;
+//		}
+//		int max = 1;
+//		for (int i = 0; i < tmp.length; i++) {
+//			map.put(s.charAt(i),1);
+//			for (int j = i+1; j < tmp.length; j++) {
+//				if(!map.containsKey(s.charAt(j))) {
+//					map.put(s.charAt(j), 1);
+//					max = Math.max(max, j-i+1);
+//				}else {
+//					break;
+//				}
+//			}
+//			map.clear();
+//		}
+//		return max;
+//	}
+//方法二：设置指针，双指针前后移动
+//	public static int lengthOfLongestSubstring(String s) {
+//		Map<Character, Integer> map = new HashMap<>();
+//		int i = 0,j = -1;
+//		int max = j-i+1;
+//		for (int k = 0; k < s.length(); k++) {
+//			if(!map.containsKey(s.charAt(k))) {
+//				map.put(s.charAt(k), k);
+//				j++;
+//				max = Math.max(max, j-i+1);
+//			}else {
+//				i--;
+//				//这里没有清空i的元素
+//			}
+//		}
+//		return max;
+//	}
 	
-	
-	
+	public static int lengthOfLongestSubstring(String s) {
+        Map<Character,Integer> map = new HashMap<>();
+        int maxLen = 0;
+        int left = -1;
+        for(int right = 0;right < s.length();right++){
+            if(map.containsKey(s.charAt(right))){
+                left = Math.max(left,map.get(s.charAt(right)));
+            }
+            map.put(s.charAt(right),right);
+            maxLen = Math.max(maxLen,right - left);
+        }
+        return maxLen;
+    }
+	public static void main(String[] args) {
+		System.out.println(lengthOfLongestSubstring("abcaf"));
+	}
 	
 	
 	
