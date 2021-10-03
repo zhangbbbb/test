@@ -1,5 +1,7 @@
 package aaa;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -472,13 +474,88 @@ public class Solution {
 //		}
 //		return i;
 //	}
+/**
+ * 给出一个target。返回能组成它的连续数组的集合
+ * 要求连续数组是至少两个数组成的
+ * 所以滑动左边界最大到>=target/2
+ * @param target
+ * @return
+ */
+//方法：滑动窗口
+//	public int[][] findContinuousSequence(int target) {
+//		List<int[]> list = new ArrayList<>();
+//		int l =1,r =1,sum=0;//滑动窗口  左右边界
+//		while(l<=target/2) {
+//			if(sum>target) {
+//				sum-=l;//别忘记 
+//				l++;
+//			}else if(sum < target){
+//				sum+=r;
+//				r++;
+//			}else {
+//				int[] tmp = new int[r-l];//上面进行了l++，所以这里不用r-l+1了
+//				for (int i = l; i < r; i++) {
+//					tmp[i-l] = i;
+//				}
+//				list.add(tmp);//别忘记存进去
+//				sum-=l;//别忘记减掉l，再从l+1开始
+//				l++;
+//			}
+//		}
+//		return list.toArray(new int[list.size()][]);//别忘记list转成矩阵输出
+//    }
+//	
 	
-	
-	
-	
-	
-	
-	
+/**
+ * 给出一个整数组和一个k。找出和为k的连续子序列
+ * （子序列可以为1个数）
+ * 
+难点：
+*输入:nums = [1,1,1], k = 2
+*输出: 2
+解释: 此题 [1,1] 与 [1,1] 为两种不同的情况
+ * @param nums
+ * @param k
+ * @return
+ */
+//理解错题意：new int[] {1,2,1,2,1}, 3) 题目说的是连续子数组，就不能排序
+	//有负数的情况下，不适用滑动窗口，不知道是往左还是往右
+//	public static int subarraySum(int[] nums, int k) {
+//		if(k<=0) {
+//			return 0;
+//		}
+//		int i = 0,j=0,sum = 0,res = 0;
+//		while(i<=nums.length-1 && j<=nums.length) {
+//			if(sum>k) {
+//				sum-=nums[i];
+//				i++;
+//			}else if(sum<k&&j<=nums.length-1) {
+//				sum+=nums[j];
+//				j++;
+//			}else if(sum==k&&i<=nums.length-1){
+//				res++;
+//				sum-=nums[i];
+//				i++;
+//			}else {
+//				break;
+//			}
+//		}
+//		return res;
+//    }
+//方法：前缀和+哈希表 
+	public int subarraySum(int[] nums, int k) {
+		HashMap<Integer, Integer> map = new HashMap<>();
+		map.put(0, 1);
+		int res = 0,sum = 0;
+		for (int num : nums) {
+			sum+=num;
+			if(map.containsKey(sum-k)) {
+				res+=map.get(sum-k);
+			}
+			map.put(sum, map.getOrDefault(sum, 0)+1);
+		}
+		return res;
+	}
 	
 	
 	
