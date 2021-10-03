@@ -401,9 +401,88 @@ public class Solution {
         }
         return maxLen;
     }
-	public static void main(String[] args) {
-		System.out.println(lengthOfLongestSubstring("abcaf"));
-	}
+	
+/**
+ * 股票的最大收益
+ * @param prices
+ * @return
+ */
+//方法一：暴力双循环
+//	public int maxProfit(int[] prices) {
+//		int sum = 0,max = 0;
+//		for (int i = 0; i < prices.length; i++) {
+//			for (int j = i; j < prices.length; j++) {
+//				sum= prices[j]-prices[i];
+//				max = Math.max(max, sum);
+//			}
+//			sum = 0;
+//		}
+//		return max;
+//	}
+
+//方法二：good
+//	public int maxProfit(int[] prices) {
+//		int maxfit = 0,min=Integer.MAX_VALUE;//min不可以设置是0，可能都是负数，就进不到第一个循环里了
+//		for (int i = 0; i < prices.length; i++) {
+//			//记录历史最低的一天
+//			if(prices[i]<min) {//没有进入就是没有比min小的
+//				min = prices[i];
+//			}
+//			//用现在的减去最低的一天，跟之前记录的最大利润比较
+//			if(prices[i]-min>maxfit) {//（关键一步）就会拿当前值来这里-min 看看获得的差值是不是最大的，如果是记录下来
+//				maxfit = prices[i]-min;
+//			}
+//		}
+//		return maxfit;
+//	}
+	
+/**
+ * 0--n-1缺少的数字
+ *   在n-1的递增排序数组中
+ * @param nums
+ * @return
+ */
+//方法一：myself nums[i]+1与nums[i+1]比较，注意for循环的边界-1
+//	public int missingNumber(int[] nums) {
+//		//判断是不是第一个数丢了
+//        if(nums[0]!=0) {
+//			return 0;
+//		}
+//        //判断是不是中间的数丢了
+//		for (int i = 0; i < nums.length-1; i++) {
+//			if(nums[i]+1!=nums[i+1]) {
+//				return nums[i]+1;
+//			}else{
+//               continue;
+//            }
+//		}
+//        //只能是最后一个丢了
+//        return nums.length;//[0,1,2] 返回3
+//    }
+//方法二：二分法
+//	public int missingNumber(int[] nums) {
+//		int i=0,mid,j=nums.length-1;
+//		while(i<=j) {
+//			mid = (i+j)/2;
+//			if(mid==nums[mid]) {
+//				i = mid + 1;
+//			}else {
+//				j = mid - 1;
+//			}
+//		}
+//		return i;
+//	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
