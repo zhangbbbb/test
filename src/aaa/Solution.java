@@ -22,9 +22,10 @@ public class Solution {
 //		}
 //	}
 
-	/**
-	 * 合并两个逆序数组
-	 */
+/**
+ * 合并两个有序数组
+ https://leetcode-cn.com/problems/merge-sorted-array/
+ */
 
 	// 方法一：正向双指针
 //	public void merge(int[] nums1, int m, int[] nums2, int n) {
@@ -389,6 +390,12 @@ public class Solution {
 //		}
 //		return max;
 //	}
+/**
+ *最长不含重复字符的子字符串
+https://leetcode-cn.com/problems/zui-chang-bu-han-zhong-fu-zi-fu-de-zi-zi-fu-chuan-lcof/
+ * @param s
+ * @return
+ */
 	
 	public static int lengthOfLongestSubstring(String s) {
         Map<Character,Integer> map = new HashMap<>();
@@ -403,6 +410,11 @@ public class Solution {
         }
         return maxLen;
     }
+	public static void main(String[] args) {
+		lengthOfLongestSubstring("abcaaabcabc");
+	}
+	
+	
 	
 /**
  * 股票的最大收益
