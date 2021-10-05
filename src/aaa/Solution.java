@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import com.sun.org.apache.xpath.internal.axes.ReverseAxesWalker;
+
 public class Solution {
 //	public static void main(String[] args) {
 //		Scanner scan = new Scanner(System.in);
@@ -569,9 +571,39 @@ https://leetcode-cn.com/problems/zui-chang-bu-han-zhong-fu-zi-fu-de-zi-zi-fu-chu
 		return res;
 	}
 	
-	
-	
-	
+/**
+ * 回文数	
+ * @param x
+ * @return
+ */
+//方法一：前后指针向中间移动
+//	public boolean isPalindrome(int x) {
+//		char[] tmp = String.valueOf(x).toCharArray();//关键一步。把int整数转成String，用String的toCharArray()方法
+//		int i=0,j=tmp.length-1;
+//		while(i<=j) {
+//			if(tmp[i]!=tmp[j]) {
+//				return false;
+//			}else {
+//				i++;
+//				j--;
+//			}
+//		}
+//		return true;
+//    }
+//方法二：反转一半数字
+//	public boolean isPalindrome(int x) {
+//		if(x<0 || (x%10 == 0 && x!=0)) {
+//			return false;
+//		}
+//		int reversenumber = 0;
+//		while(x>reversenumber) {
+//			reversenumber = x%10+reversenumber*10;//1 12 123
+//			x/=10;//1232 123 12跳出(x<reversenumber，偶数时会等于也会跳出) x是奇数的时候，判断时需要把reversenumber/10去掉中间位比较
+//		}
+//		return reversenumber==x || reversenumber/10 ==x ;
+//	}
+
+		
 	
 	
 	
