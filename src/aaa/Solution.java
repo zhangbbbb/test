@@ -603,8 +603,43 @@ https://leetcode-cn.com/problems/zui-chang-bu-han-zhong-fu-zi-fu-de-zi-zi-fu-chu
 //		return reversenumber==x || reversenumber/10 ==x ;
 //	}
 
-		
 	
+/**leecode543
+ * 二叉树的直径 
+ * 任意两个节点长度的最大值
+ * https://leetcode-cn.com/problems/diameter-of-binary-tree/
+ * @param root
+ * @return
+ */
+	
+	/*public class TreeNode {
+	      int val;
+	      TreeNode left;
+	      TreeNode right;
+	      TreeNode() {}
+	      TreeNode(int val) { this.val = val; }
+	      TreeNode(int val, TreeNode left, TreeNode right) {
+	          this.val = val;
+	          this.left = left;
+	          this.right = right;
+	      }
+	  }	*/
+	
+//	int res = 0;
+//	public int diameterOfBinaryTree(TreeNode root) {
+//		deepSearch(root);
+//		return res;
+//    }
+//	public int deepSearch(TreeNode root) {
+//		if(root==null) {
+//			return 0;
+//		}	
+//		int leftDepth = deepSearch(root.left);
+//		int rightDepth = deepSearch(root.right);
+//		res = Math.max(res,leftDepth+rightDepth) ;
+//		return Math.max(leftDepth,rightDepth)+1;
+//	}
+//	
 	
 	
 	
