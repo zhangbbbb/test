@@ -107,7 +107,10 @@ public class Solution {
 		}
 		return new int[] { x, y };
 	}
-//
+/**数组中数字出现的次数
+ * 只有一个数字出现一次，其他数字都出现了三次
+ * https://leetcode-cn.com/problems/shu-zu-zhong-shu-zi-chu-xian-de-ci-shu-ii-lcof/
+ */
 //	public int singleNumber(int[] nums) {
 //		int[] counts = new int[32];
 //

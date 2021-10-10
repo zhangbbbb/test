@@ -73,30 +73,51 @@ https://leetcode-cn.com/problems/w3tCBm/
  * @param n
  * @return
  */
-	public int[] countBits(int n) {
-		int[] res = new int[n+1];
-		int x = n,j=0;
-		while(x>=1) {
-			x/=2;
-			j++;
-		}
-		System.out.println("j="+j);
-		while(n>=0) {
-			int m = 1,count = 0;
-			for (int i = 0; i < j; i++) {
-				if((n&(m<<i))==1) {
-					count++;
-				}else {
-					continue;
-				}
-			}
-			res[n] = count; 
-			n--;
-		}
-		return res;
-    }
-		
+//方法一：动态规划
+//	思路：当前数x 1的个数 = x/2的个数  + 第0位是否是1
+//	public int[] countBits(int n) {
+//		int[] res = new int[n+1];
+//		//计算0--n
+//		for (int i = 0; i < res.length; i++) {
+//			res[i] = res[i>>1] + (i&1);
+//		}
+//		return res;
+//	}
 	
+//动态规划 区分n是奇偶数
+//	public int[] countBits(int n) {
+//		int[] res = new int[n+1];
+//		for (int i = 0; i < res.length; i++) {
+//			//如果当前数i是偶数，就等于除2后1的个数
+//			if (i%2==0) {
+//				res[i] = res[i/2];
+//			//如果当前数是奇数，就等于前一个偶数的加1
+//			}else {
+//				res[i] = res[i-1]+1;//让它变成偶数
+//			}
+//		}
+//		return res;
+//	}
+//方法二：每一位分别进行的位运算
+//	public int[] countBits(int n) {
+//		int[] res = new int[n+1];
+//		//计算出n的位数
+//		int x = n,j=0;
+//		while(x>=1) {
+//			x/=2;
+//			j++;
+//		}
+//		//循环0--n
+//		for (int i = 0; i < res.length; i++) {
+//			int count = 0;
+//			//从i的第0位到第j-1位
+//			for (int k = 0; k < j; k++) {
+//				count += (i>>k)&1;//这里最好不要写i&(1<<k),当10&10时，值为2，不是1。计算的是对应的值。
+//			}
+//			res[i] = count; 
+//		}
+//		return res;
+//    }
 	
 	
 	
