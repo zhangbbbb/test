@@ -85,7 +85,7 @@ public class Test {
 			}
 			if(end == null) {
 				break;
-			}
+			} 
 			
 			//先记录下end后的节点
 			ListNode next = end.next;
