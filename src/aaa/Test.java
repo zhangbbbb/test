@@ -38,7 +38,7 @@ public class Test {
 					size = r-l+1;
 					start = l;
 				}
-				//左边界右移,由于减少了一位需要的字符，所以加1
+				//左边界右移,由于减少了一位需要的字符，所以加1 
 				need[s.charAt(l)]++;
 				l++;
 				count++;
