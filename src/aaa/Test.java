@@ -47,7 +47,7 @@ public class Test {
 			r++;
 		}
 		return size ==Integer.MAX_VALUE?"":s.substring(start,start+size);
-		
+
     }
 	
 	
