@@ -6,6 +6,12 @@ import java.util.Map;
 import java.util.Queue;
 
 public class Test {
+	/**lc76
+	 * 寻找最短覆盖子串
+	 * @param s
+	 * @param t
+	 * @return
+	 */
 	public String minWindow(String s, String t) {
 		if(s == null || s.length() == 0 || t==null||t.length()==0) {	
 			return "";
@@ -32,7 +38,7 @@ public class Test {
 					size = r-l+1;
 					start = l;
 				}
-				//左边界右移,由于减少了一位需要的字符，suo'yi
+				//左边界右移,由于减少了一位需要的字符，所以加1
 				need[s.charAt(l)]++;
 				l++;
 				count++;
