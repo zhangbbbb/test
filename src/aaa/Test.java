@@ -86,7 +86,7 @@ public class Test {
 			if(end == null) {
 				break;
 			}  
-			
+			 
 			//先记录下end后的节点
 			ListNode next = end.next;
 			//断开与后面节点的连接，让k个节点脱节
