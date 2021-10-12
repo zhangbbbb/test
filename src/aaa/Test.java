@@ -12,45 +12,96 @@ public class Test {
 	 * @param t
 	 * @return
 	 */
+//	public String minWindow(String s, String t) {
+//		if(s == null || s.length() == 0 || t==null||t.length()==0) {	
+//			return "";
+//		}
+//		int[] need = new int[128];
+//		Map<Character,Integer> sMap = new HashMap<>();
+//		char[] tChar = t.toCharArray();
+//		for (char c : tChar) {
+//			need[c]++;
+//		}
+//		int l=0,r=0,size=Integer.MAX_VALUE,count = t.length(),start=0;
+//		while(r<s.length()) {
+//			char c = s.charAt(r);
+//			if(need[c]>0) {
+//				count--;
+//			}
+//			need[c]--;
+//			if(count==0) {
+//				while(l<r && need[s.charAt(l)]<0) {//need值大于0是需要的，没遇到一个r对应的要包括进去的数，包括进去了need值--
+//					need[s.charAt(l)]++;//eg，need中有值a = 2，不需要了让need值++，然后指针右移
+//					l++;
+//				}
+//				if(r-l+1<size) {//更新有效区间最小值
+//					size = r-l+1;
+//					start = l;
+//				}
+//				//左边界右移,由于减少了一位需要的字符，所以加1 
+//				need[s.charAt(l)]++;
+//				l++;
+//				count++;
+//			}
+//			//右边界右移
+//			r++;
+//		}
+//		return size ==Integer.MAX_VALUE?"":s.substring(start,start+size);
+//
+//    }
+	//good
 	public String minWindow(String s, String t) {
-		if(s == null || s.length() == 0 || t==null||t.length()==0) {	
-			return "";
+		int[] hole = new int[128];
+		for (char c: t.toCharArray()) {
+			hole[c]--;
 		}
-		int[] need = new int[128];
-		Map<Character,Integer> sMap = new HashMap<>();
-		char[] tChar = t.toCharArray();
-		for (char c : tChar) {
-			need[c]++;
-		}
-		int l=0,r=0,size=Integer.MAX_VALUE,count = t.length(),start=0;
-		while(r<s.length()) {
-			char c = s.charAt(r);
-			if(need[c]>0) {
-				count--;
-			}
-			need[c]--;
-			if(count==0) {
-				while(l<r && need[s.charAt(l)]<0) {//need值大于0是需要的，没遇到一个r对应的要包括进去的数，包括进去了need值--
-					need[s.charAt(l)]++;//eg，need中有值a = 2，不需要了让need值++，然后指针右移
-					l++;
-				}
-				if(r-l+1<size) {//更新有效区间最小值
-					size = r-l+1;
-					start = l;
-				}
-				//左边界右移,由于减少了一位需要的字符，所以加1 
-				need[s.charAt(l)]++;
-				l++;
+		String res ="";
+		int length = s.length()+1;
+		int count = 0;
+		for (int i = 0,j=0; j<s.length(); j++) {
+			char ch = s.charAt(j);
+			if(hole[ch]<0) {
 				count++;
 			}
-			//右边界右移
-			r++;
+			hole[ch]++;
+			while(i<j && hole[s.charAt(i)]>0) {
+				hole[s.charAt(i++)]--;
+			}
+			if(count==t.length() && length>j-i+1) {
+				length = j-i+1;
+				res = s.substring(i,j+1);
+			}
 		}
-		return size ==Integer.MAX_VALUE?"":s.substring(start,start+size);
-
-    }
-	
-	
+		return res;
+	}
+	//youwenti
+//	public String minWindow(String s, String t) {
+//		HashMap<Character, Integer> hs = new HashMap<Character, Integer>();
+//		HashMap<Character, Integer> ht = new HashMap<Character, Integer>();
+//		for (char c:t.toCharArray()) {
+//			ht.put(c, hs.getOrDefault(c, 0)+1);
+//		}
+//		String res = "";
+//		int length = s.length()+1;
+//		int count = 0;
+//		for (int i = 0,j=0; j < s.length(); j++) {
+//			char c = s.charAt(j);
+//			hs.put(c,hs.getOrDefault(c, 0)+1);
+//			if(ht.containsKey(c) && hs.get(c) <= ht.get(c)) {
+//				count++;
+//			}
+//			while (i<j &&  (!ht.containsKey(s.charAt(i)) || hs.get(s.charAt(i))>ht.get(s.charAt(i)))) {
+//				hs.put(s.charAt(i),hs.get(s.charAt(i))-1);
+//				i++;
+//			}
+//			if(count == t.length() && length >j-i+1) {
+//				length = j-i+1;
+//				res = s.substring(i,j+1);
+//				
+//			}
+//		}
+//		return res;
+//	}
 	
 	
 	/**lc25
@@ -65,7 +116,7 @@ public class Test {
 		      ListNode(int val) { this.val = val; }
 		      ListNode(int val, ListNode next) { this.val = val; this.next = next; }
 		  }
-	
+	//good
 	public ListNode reverseKGroup(ListNode head, int k) {
 		if(head==null || head.next==null) {
 			return head;
