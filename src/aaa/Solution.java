@@ -645,6 +645,115 @@ https://leetcode-cn.com/problems/zui-chang-bu-han-zhong-fu-zi-fu-de-zi-zi-fu-chu
 //	
 	
 	
+/**lc101
+ * k个一组翻转链表
+ * https://leetcode-cn.com/problems/reverse-nodes-in-k-group/submissions/
+ * @param head
+ * @param k
+ * @return
+ */
+	//思路：设置一个假节点，放在最前面。
+	//每次开始前pre和end都在上一组的末尾。第一组的时候需要设置一个假节点代替上一组末尾
+	//然后让end移动到当前组的末尾。start在开头，进行反转
+	//翻转完成后，进行拼接,让上一组末尾的pre拼接上反转后的第一位
+	//循环进行拼接，让start和下一组开头拼上，start就位于当前组的末尾了。让pre和end也到当前组（下一组开始，就相当于上一组末尾）的末尾，开始下一组
+//	public ListNode reverseKGroup(ListNode head, int k) {
+//		if(head == null || head.next ==null) {//head.next==null 为一个节点head，也不用翻转
+//			return head;
+//		}
+//		//定义假节点
+//		ListNode dummy = new ListNode(0);
+//		dummy.next = head;
+//		ListNode pre = dummy;
+//		ListNode end = dummy;
+//		while(end.next!=null) {
+//			for (int i = 0; i < k && end!=null; i++) {
+//				end = end.next;
+//			}
+//			//忘记判断end是不是为null
+//			if(end==null) {
+//				break;
+//			}
+//			
+//			//用next记录下一组的开头
+//			ListNode next = end.next;
+//			//断开连接
+//			end.next = null;
+//			//记录开始的节点
+//			ListNode start = pre.next;
+//			//开始翻转
+//			pre.next = reverse(start);//忘记谁拼前
+//			//拼接下一组
+//			start.next = next;//忘记拼后
+//			//更新pre end
+//			pre = start;
+//			end = start;
+//		}
+//		return dummy.next;
+//	}
+//	public ListNode reverse(ListNode head) {
+//		ListNode prev = null;
+//		ListNode curr = head;
+//		while(curr!=null) {
+//			ListNode next = curr.next;
+//			curr.next = prev;
+//			prev = curr;
+//			curr = next;
+//		}
+//		return prev;
+//	}
+//	public class ListNode {
+//		int val;
+//		ListNode next;
+//		ListNode(){
+//			
+//		}
+//		ListNode(int val){
+//			this.val = val;
+//		}
+//		ListNode(int val,ListNode next){
+//			this.val = val;
+//			this.next = next;
+//		}
+//	}
+	
+/**lc76
+ * 最小覆盖子串
+ * https://leetcode-cn.com/problems/minimum-window-substring/
+ * @param s
+ * @param t
+ * @return
+ */
+	//滑动窗口填坑
+//	 public String minWindow(String s, String t) {
+//		int[] hole = new int[128];
+//		for (char c : t.toCharArray()) {
+//			hole[c]--;
+//		}
+//		int count = 0;
+//		String res = "";
+//		int length = s.length() + 1;
+//		for (int i = 0, j = 0; j < s.length(); j++) {//粗心错写成i<s.length()
+//			char ch = s.charAt(j);
+//			if (hole[ch] < 0) {
+//				count++;
+//			}
+//
+//			// 扩大窗口
+//			hole[ch]++;
+//			// 缩小窗口
+//			while (i < j && hole[s.charAt(i)] > 0) {
+//				hole[s.charAt(i++)]--;
+//			}
+//			// 计算子串
+//			if (count == t.length() && length > j - i + 1) {
+//				length = j - i + 1;
+//				res = s.substring(i, j + 1);
+//			}
+//		}
+//		return res;
+//
+//	 }
 	
 	
 	
